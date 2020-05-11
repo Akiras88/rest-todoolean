@@ -4,6 +4,7 @@ $(document).ready(function(){
     var newTodoInput = $('.input-todo');
     var newTodoBtn = $('.fa-plus-circle');
     var todoList = $('.todos');
+    var todoVal = newTodoInput.val().trim();
 
     // init hendlebars
     var source = $('#todo-template').html();
@@ -17,13 +18,21 @@ $(document).ready(function(){
     }
     var settPost = {
         url: myApi,
-        method: 'POST'
+        method: 'POST',
+        data: {
+            text : todoVal
+        }
     }
     /***********
      * actions *
      ***********/
     // get all todo
     printTodo(settGet, template, todoList);
+    // create a new todo item
+    newTodoBtn.click(function(){
+        createTodo(newTodoInput,settGet, settPost, template, todoList);
+    });
+
 
 
 }); // end document ready
@@ -48,5 +57,13 @@ function printTodo(settGet, template, todoList) {
     }).fail(function(error){
         console.log('errore chiamata API');
     })
+}
 
+function createTodo(input, settGet, settPost, template, todoList) {
+    // var todoVal = input.val().trim();
+    $.ajax(settPost).done(function(){
+        printTodo(settGet, template, todoList);
+    }).fail(function(error){
+        console.log('si è verificato un errore nell\'aggiunta del nuovo valore');
+    })
 }
