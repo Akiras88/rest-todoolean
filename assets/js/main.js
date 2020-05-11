@@ -4,7 +4,6 @@ $(document).ready(function(){
     var newTodoInput = $('.input-todo');
     var newTodoBtn = $('.fa-plus-circle');
     var todoList = $('.todos');
-    var todoVal = newTodoInput.val().trim();
 
     // init hendlebars
     var source = $('#todo-template').html();
@@ -16,13 +15,6 @@ $(document).ready(function(){
         url: myApi,
         method: 'GET' 
     }
-    var settPost = {
-        url: myApi,
-        method: 'POST',
-        data: {
-            text : todoVal
-        }
-    }
     /***********
      * actions *
      ***********/
@@ -30,16 +22,18 @@ $(document).ready(function(){
     printTodo(settGet, template, todoList);
     // create a new todo item
     newTodoBtn.click(function(){
-        createTodo(newTodoInput,settGet, settPost, template, todoList);
+        createTodo(settGet, newTodoInput, myApi, template, todoList);
     });
-
-
-
+    // remove a todo item
+    $(document).on('click', '.remove', function(){
+        delateTodo($(this), settGet, myApi, template, todoList);
+    });
 }); // end document ready
 
 /************
  * FUNCTIONS*
  ***********/
+// get all todo from API
 function printTodo(settGet, template, todoList) {
     //reset
     todoList.html('');
@@ -58,12 +52,30 @@ function printTodo(settGet, template, todoList) {
         console.log('errore chiamata API');
     })
 }
-
-function createTodo(input, settGet, settPost, template, todoList) {
-    // var todoVal = input.val().trim();
-    $.ajax(settPost).done(function(){
+// create a new todo function
+function createTodo(settGet, input, myApi, template, todoList) {
+    var todoVal = input.val().trim();
+    $.ajax({
+        url: myApi,
+        method: 'POST',
+        data: {
+            text : todoVal
+        } 
+    }).done(function(){
         printTodo(settGet, template, todoList);
     }).fail(function(error){
         console.log('si è verificato un errore nell\'aggiunta del nuovo valore');
+    })
+}
+// delate a todo by ID
+function delateTodo(self, settGet, myApi, template, todoList) {
+    var todoId = self.data('id');
+    $.ajax({
+        url: myApi + '/' + todoId,
+        method: 'DELETE',
+    }).done(function(){
+        printTodo(settGet, template, todoList);
+    }).fail(function(error){
+        console.log('si è verificato un errore nella cancellazione dell\'elemento');
     })
 }

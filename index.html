@@ -23,7 +23,9 @@
     <script id="todo-template" type="text/x-handlebars-template">
         <li class="todo">
             {{ text }}
-            <i class="fas fa-trash"></i>
+            <span class="remove" data-id="{{ id }}">
+                <i class="fas fa-trash"></i>
+            </span>
         </li>
     </script>
 
