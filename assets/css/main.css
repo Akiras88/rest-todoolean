@@ -1,4 +1,6 @@
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 body {
@@ -7,18 +9,40 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     height: 100vh;
 }
-
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    overflow-y: auto;
+}
 header {
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 10px;
 } 
 header i {
     padding-right: 20px;
     font-size: 25px;
 }
+main {
+    display: flex;
+    justify-content: center;
+}
+main i {
+    margin-left: 10px;
+    font-size: 20px;
+}
 .todos {
     list-style: none;
+}
+.todo {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
 }

@@ -9,16 +9,20 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 </head>
 <body>
-    <header>
-        <i class="fas fa-list-ul"></i>
-        <h1>My Todo</h1>
-    </header>
-    <main>
-        <input class="input-todo" type="text">
-        <i class="fas fa-plus-circle"></i>
-    </main>
+    <div class="container">
+        <header>
+            <i class="fas fa-list-ul"></i>
+            <h1>My Todo</h1>
+        </header>
+        <main>
+            <input class="input-todo" type="text" placeholder="add todo">
+            <i class="fas fa-plus-circle"></i>
+        </main>
 
-    <ul class="todos"></ul>
+        <ul class="todos"></ul>
+    </div>
+
+
     <!-- handlebars template -->
     <script id="todo-template" type="text/x-handlebars-template">
         <li class="todo">

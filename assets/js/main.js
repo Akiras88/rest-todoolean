@@ -62,6 +62,7 @@ function createTodo(settGet, input, myApi, template, todoList) {
             text : todoVal
         } 
     }).done(function(){
+        input.val('');
         printTodo(settGet, template, todoList);
     }).fail(function(error){
         console.log('si è verificato un errore nell\'aggiunta del nuovo valore');
