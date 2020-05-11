@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: sans-serif;
+    background: linear-gradient(232deg, rgba(34,195,58,1) 0%, rgb(255,255,255) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+} 
+header i {
+    padding-right: 20px;
+    font-size: 25px;
+}
+.todos {
+    list-style: none;
+}

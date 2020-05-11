@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Todoolean</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- icon set -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</head>
+<body>
+    <header>
+        <i class="fas fa-list-ul"></i>
+        <h1>My Todo</h1>
+    </header>
+    <main>
+        <input class="input-todo" type="text">
+        <i class="fas fa-plus-circle"></i>
+    </main>
+
+    <ul class="todos"></ul>
+    <!-- handlebars template -->
+    <script id="todo-template" type="text/x-handlebars-template">
+        <li class="todo">
+            {{ text }}
+            <i class="fas fa-trash"></i>
+        </li>
+    </script>
+
+    <!-- handlebars -->
+    <script src="assets/js/handlebars-v4.7.6.js"></script>
+    <!-- jQuery -->
+    <script src="assets/js/jquery-3.5.0.min.js"></script>
+    <!-- js -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
